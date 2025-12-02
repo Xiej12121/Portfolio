@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+    .font-cagliostro {
+        font-family: 'Cagliostro', sans-serif;
+    }
+
+    .perspective {
+        perspective: 1000px;
+    }
+
+    .preserve-3d {
+        transform-style: preserve-3d;
+    }
+
+    .backface-hidden {
+        backface-visibility: hidden;
+    }
+
+    .rotate-y-180 {
+        transform: rotateY(180deg);
+    }
+
+    .card-inner {
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 0.5rem;
+    }
+
+    .card-front {
+        background-color: #bae6fd; /* sky-200 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.875rem;
+        font-weight: bold;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+        background-color: #bae6fd;
+        padding: 1rem;
+        overflow-y: auto;
+    }
+    </style>
+
+
+    <title>Justin Xie's Portfolio</title>
+  </head>
+  <body>
+     <div>
+        <nav x-data="{ open: false }" class="bg-sky-100 p-5 relative shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-12">
+        
+            <div class="flex-shrink-0">
+                <a href="index.html">
+                <h2 class="font-cagliostro text-xl font-bold">Justin Xie</h2>
+                </a>
+            </div>
+
+            <div class="hidden sm:flex space-x-6">
+                <a href="index.html#nav" class="font-cagliostro hover:underline">Home</a>
+                <a href="resume.html" class="font-cagliostro hover:underline">Resume</a>
+                <a href="portfolio.html" class="font-cagliostro hover:underline">Portfolio</a>
+                <a href="contact.html" class="font-cagliostro hover:underline">Contact</a>
+            </div>
+
+            <div class="sm:hidden">
+                <button @click="open = !open" class="text-2xl text-gray-700 hover:text-black focus:outline-none">
+                <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+                </button>
+            </div>
+            </div>
+
+            <div x-show="open" @click.away="open = false" class="sm:hidden mt-4 space-y-2">
+            <a href="index.html#nav" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Home</a>
+            <a href="resume.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Resume</a>
+            <a href="portfolio.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Portfolio</a>
+            <a href="contact.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Contact</a>
+            </div>
+        </div>
+        </nav>
+
+        <div class="bg-sky-50 font-cagliostro">
+            <section> 
+                <h3 class="font-bold text-3xl text-center pt-8">Welcome to my resume!
+                </h3>
+                <h4 class="font-semibold text-lg text-center p-1">Hover over the cards to view details!</h4>
+            </section>
+            <div class="container mx-auto px-8 py-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+                    <!-- Skills card -->
+                    <div x-data=" {hovered: false}"
+                         @mouseenter="hovered = true"
+                         @mouseleave="hovered = false"
+                         class="relative w-full h-80 perspective cursor-pointer">
+                         <div :class="hovered ? 'rotate-y-180' : ' ' " class="card-inner">
+                               <!-- going to be front of the card -->
+                               <div class="card-front">
+                                    Skills
+                               </div>
+                               <!-- going to be the back of the card -->
+                                <div class="card-back">
+                                    <ul class="list-disc list-inside space-y-1">
+                                        <li> Learning Web Development </li>
+                                        <li> Learning UX/UI Design </li>
+                                        <li> Video Editing </li>
+                                        <li> Digital Marketing </li>
+                                        <li> Proficient in Microsoft Office </li>
+                                    </ul>
+                               </div>
+                         </div>
+                    </div>
+
+
+                    <div x-data=" {hovered: false}"
+                         @mouseenter="hovered = true"
+                         @mouseleave="hovered = false"
+                         class="relative w-full h-80 perspective cursor-pointer">
+                         <div :class="hovered ? 'rotate-y-180' : ' ' " class="card-inner">
+                               <!-- going to be front of the card -->
+                               <div class="card-front">
+                                    Education
+                               </div>
+                               <!-- going to be the back of the card -->
+                                <div class="card-back">
+                                    <p class="text-lg font-semibold">Embry Riddle Aeronautical University</p>
+                                    <p>Major: Business Adminstration - Finance</p>
+                                    <p>Aug 2022 - May 2023</p>
+                                    <p class="text-lg font-semibold">University of Florida</p>
+                                    <p>Major: Business Adminstration concentration Computer Science</p>
+                                    <p>Minor: Infomation Systems</p>
+                                    <p>Aug 2023 - Present</p>
+                               </div>
+                         </div>
+                    </div>
+
+
+                    <div x-data=" {hovered: false}"
+                         @mouseenter="hovered = true"
+                         @mouseleave="hovered = false"
+                         class="relative w-full h-80 perspective cursor-pointer">
+                         <div :class="hovered ? 'rotate-y-180' : ' ' " class="card-inner">
+                               <!-- going to be front of the card -->
+                               <div class="card-front">
+                                    Experience
+                               </div>
+                               <!-- going to be the back of the card -->
+                                <div class="card-back">
+                                    <p class="text-lg font-semibold">Aspire Executive Coaching</p>
+                                    <p>Digital Marketer / Web Design Intern</p>
+                                    <p>July 2025 - September 2025</p>
+                                    <p>Edited 30+ videos <br>Created Scripts <br> Researched competitors digital marketing strategies <br> Refined website design and provided ideas for improvements</p>
+                                    <p class="text-lg font-semibold">China First</p>
+                                    <p>Manager/Waiter</p>
+                                    <p>Decemeber 2012 - December 2024</p>
+                                    <p>Manage Financial Breakdowns, running ad campaigns, learning business framework.</p>
+                               </div>
+                         </div>
+                    </div>
+
+
+                    <div x-data=" {hovered: false}"
+                         @mouseenter="hovered = true"
+                         @mouseleave="hovered = false"
+                         class="relative w-full h-80 perspective cursor-pointer">
+                         <div :class="hovered ? 'rotate-y-180' : ' ' " class="card-inner">
+                               <!-- going to be front of the card -->
+                               <div class="card-front">
+                                    Certifications
+                               </div>
+                               <!-- going to be the back of the card -->
+                                <div class="card-back">
+                                    <p class="mb-1">Google's Foundations of User Experience (UX) Design    <a href="Documents/founduxdesgcert.pdf"><i class="fa-solid fa-arrow-up-from-bracket text-xl indent-2 "></i></a></p>
+                                    <p class="mb-1">Google UX Design (In progress)</p>
+                                    <p class="mb-1">2016 Microsoft Office Certifications (Need to find it)</p>
+                               </div>
+                         </div>
+                    </div>
+
+                
+            </div>
+            </div>
+               <div class="text-center flex flex-row items-center justify-center p-2 mb-4">
+                        <button class="font-cagliostro bg-sky-100 rounded-full p-4 m-2
+                        hover:bg-sky-300 hover:scale-105 transition-colors duration-300 mb-2"><a href="Documents/Xie_Resume (2).pdf">Download Resume</a></button>
+                    </div>
+
+
+            <section class="bg-sky-100 flex flex-col items-center justify-center p-4">
+            <ul class="list-none w-64 text-center">
+                <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                        hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+                <a href="index.html#nav" class="font-cagliostro">Home</a>
+                </li>
+                <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                        hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+                <a href="resume.html" class="font-cagliostro">Resume</a>
+                </li>
+                <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                        hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+                <a href="portfolio.html" class="font-cagliostro">Portfolio</a>
+                </li>
+                <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                        hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+                <a href="contact.html" class="font-cagliostro">Contact</a>
+                </li>
+            </ul>
+            <div class="text-center pt-6">
+                <p class="pb-5 font-cagliostro">Copyright: &copy; 2025 Justin Xie</p>
+            </div>
+            </section>
+        </div>
+
+
+     </div>
+
+  </body>
+</html>

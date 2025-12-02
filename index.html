@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+      .font-cagliostro {
+        font-family: 'Cagliostro', sans-serif;
+      }
+    </style>
+
+    <title>Justin Xie's Portfolio</title>
+  </head>
+  <body x-data="{open:false}"
+        class="bg-slate-100 
+               overflow-hidden 
+               min-h-screen 
+               flex items-center justify-center 
+               relative">
+    <!-- Envelope Landing page -->
+    <div
+        x-show="!open" 
+        x-transition:leave="transition duration-1000 ease-in-out" 
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90"
+        class="z-10 relative w-240 h-150 bg-white rounded-lg shadow-lg flex flex-col justify-center items-center text-center p-6"
+>
+
+        <div class="absolute w-[2px] h-[60%] sm:h-[90%] bg-gray-300 right-[20%] bottom-[20%] rotate-45 z-0"></div> <!--left-->
+        <div class="absolute w-[2px] h-[60%] sm:h-[90%] bg-gray-300 left-[20%] bottom-[20%] -rotate-45 z-0"></div> <!--right-->
+
+
+        <div
+            @click="open = true"
+            title="click to open main"
+            class="absolute bottom-20 w-40 h-35 rounded-full cursor-pointer shadow-lg">
+            <!-- my face in place of stamp-->
+            <img id="profilepic" src="images/profile.png" alt="Profile Env picture" class="rounded-full absolute top-1">
+
+        </div>
+        <div class="z-10 absolute top-36">
+            <h1 class="font-cagliostro text-xl font-bold z-5">Welcome to Justin Xie's Portfolio</h1>
+            <p class="font-cagliostro text-lg">Lets Go!</p>
+            <p class="text-4xl">↓</p>
+        </div>
+    </div>
+    <!-- Opening Evelope code -->
+     <div x-show="open"
+          x-transition:enter="transition duration-1000 ease-in-out"
+          x-transition:enter-start="opacity-0 scale-90"
+          x-transition:enter-end="opacity-100 scale-100"
+          class="absolute inset-0 w-full h-full bg-slate-100 overflow-auto">
+        <nav x-data="{ open: false }" class="bg-sky-100 p-5 relative shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-12">
+        
+            <div class="flex-shrink-0">
+                <a href="index.html">
+                <h2 class="font-cagliostro text-xl font-bold">Justin Xie</h2>
+                </a>
+            </div>
+
+            <div class="hidden sm:flex space-x-6">
+                <a href="index.html#nav" class="font-cagliostro hover:underline">Home</a>
+                <a href="resume.html" class="font-cagliostro hover:underline">Resume</a>
+                <a href="portfolio.html" class="font-cagliostro hover:underline">Portfolio</a>
+                <a href="contact.html" class="font-cagliostro hover:underline">Contact</a>
+            </div>
+
+            <div class="sm:hidden">
+                <button @click="open = !open" class="text-2xl text-gray-700 hover:text-black focus:outline-none">
+                <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+                </button>
+            </div>
+            </div>
+
+            <div x-show="open" @click.away="open = false" class="sm:hidden mt-4 space-y-2">
+            <a href="index.html#nav" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Home</a>
+            <a href="resume.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Resume</a>
+            <a href="portfolio.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Portfolio</a>
+            <a href="contact.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Contact</a>
+            </div>
+        </div>
+        </nav>
+
+        <section id="home" class="p-8 bg-sky-50">
+          <h1 class="font-cagliostro text-center text-6xl font-bold mt-6 mb-4">Hi, I'm Justin Xie!</h1>
+          <div class="text-center flex flex-row items-center justify-center p-2">
+            <button class="font-cagliostro bg-sky-100 rounded-full p-4 m-2
+                           hover:bg-sky-300 hover:scale-105 transition-colors duration-300"><a href="#about">About me!</a></button>
+            <button class="font-cagliostro bg-sky-100 rounded-full p-4 m-2
+                           hover:bg-sky-300 hover:scale-105 transition-colors duration-300"><a href="resume.html">Resume</a></button>
+            <button class="font-cagliostro bg-sky-100 rounded-full p-4 m-2
+                           hover:bg-sky-300 hover:scale-105 transition-colors duration-300"><a href="portfolio.html">Portfolio</a></button>
+            <button class="font-cagliostro bg-sky-100 rounded-full p-4 m-2
+                           hover:bg-sky-300 hover:scale-105 transition-colors duration-300"><a href="contact.html">Contact me</a></button>
+          </div>
+        </section>
+
+        <section id="about" class="py-12 bg-sky-50">
+          <div class="container mx-auto px-4">  
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+
+              <div class="flex justify-center">
+                <img src="images/selfie2yearago.jpg" alt="Selfie of Justin Xie" class=" w-xl rounded-full object-cover">
+              </div>
+
+              <div>
+              <h2 class="font-cagliostro font-bold text-2xl p-3 text-center">About me</h2>
+              <p class="font-cagliostro text-lg leading-relaxed indent-8 text-justify mb-4">Hello, My name is Justin Xie, I'm a Current Fourth Year University Student. I'm studying Business Adminstration with concentration in Computer Science at University of Florida.</p>
+              <p class="font-cagliostro text-lg leading-relaxed indent-8 text-justify mb-4">So what makes me what I want to learn and do? I've always interested in Business and Technology. It took me many paths to see what fits and what doesn't. I've done strictly Business, but finance, management, marketing, the core, only doing that doesn't fill my satisfaction. </p>
+              <p class="font-cagliostro text-lg leading-relaxed indent-8 text-justify mb-4">I've always love Technology as a kid, whether that's through gaming, video editing, recording, or even being a camera man, it always fascinates me. The curiosity evolved into what my passion wants to do now, web development and UI/UX design. Being able to work as a front-end developer, and also understanding design principles that dives into the business atmosphere.</p>
+              <p class="font-cagliostro text-lg leading-relaxed indent-8 text-justify">Overall this website will be something that I will work on and improve over time so feel free to go to Contact Me and give me ideas and suggestions!</p>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-sky-100 flex flex-col items-center justify-center p-4">
+          <ul class="list-none w-64 text-center">
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="index.html#about" class="font-cagliostro">Home</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="resume.html" class="font-cagliostro">Resume</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="portfolio.html" class="font-cagliostro">Portfolio</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="contact.html" class="font-cagliostro">Contact</a>
+            </li>
+          </ul>
+          <div class="text-center pt-6">
+            <p class="pb-5 font-cagliostro">Copyright: &copy; 2025 Justin Xie</p>
+          </div>
+        </section>
+
+
+     </div>
+
+  </body>
+</html>

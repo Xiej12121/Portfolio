@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
+
+    <style>
+      .font-cagliostro {
+        font-family: 'Cagliostro', sans-serif;
+      }
+    </style>
+
+    <title>Justin Xie's Portfolio</title>
+  </head>
+  <body>
+     <div>
+      <nav x-data="{ open: false }" class="bg-sky-100 p-5 relative shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-12">
+        
+            <div class="flex-shrink-0">
+                <a href="index.html">
+                <h2 class="font-cagliostro text-xl font-bold">Justin Xie</h2>
+                </a>
+            </div>
+
+            <div class="hidden sm:flex space-x-6">
+                <a href="index.html#nav" class="font-cagliostro hover:underline">Home</a>
+                <a href="resume.html" class="font-cagliostro hover:underline">Resume</a>
+                <a href="portfolio.html" class="font-cagliostro hover:underline">Portfolio</a>
+                <a href="contact.html" class="font-cagliostro hover:underline">Contact</a>
+            </div>
+
+            <div class="sm:hidden">
+                <button @click="open = !open" class="text-2xl text-gray-700 hover:text-black focus:outline-none">
+                <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+                </button>
+            </div>
+            </div>
+
+            <div x-show="open" @click.away="open = false" class="sm:hidden mt-4 space-y-2">
+            <a href="index.html#nav" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Home</a>
+            <a href="resume.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Resume</a>
+            <a href="portfolio.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Portfolio</a>
+            <a href="contact.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Contact</a>
+            </div>
+        </div>
+        </nav>
+
+        <section class="bg-sky-50 p-8">
+            <h2 class="font-cagliostro text-center font-bold text-3xl">Contact me!</h2>
+            <p class="font-cagliostro text-center text-xl">I love to hear from you! It could be suggestions, advice, business, or even just to chat. <br>Please fill out the form below! <br> I will try to get back to you as soon as possible! <br> Look forward from hearing from you!</p>
+        </section>
+
+
+        <section class="text-dark">
+            <div class="max-w-md lg:max-w-xl mx-auto py-4 px-1">
+            <form action="mailto:justinxie@ufl.edu" x-data="{submitted: false}" @submit.prevent="submitted = true" class="space-y-4"> 
+                <!--remove @submit.prevent="submitted = true" to get the data for the network-->
+                <div x-show="!submitted">
+                <label for="Name" class="font-cagliostro block font-medium">Name</label>
+                <div class="mt-2 mb-4">
+                    <div class="flex items-center rounded-md bg-white/5 outline-1 -outline-offset-1 outline-gray-600 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-sky-500">
+                        <input required type="text" id="Name" name="Name" placeholder="Justin Xie" class="font-cagliostro w-full py-1.5 px-3 text-base focus:outline-none ">
+                    </div>
+                </div>
+                <label for="Email" class="font-cagliostro block font-medium">Email Address</label>
+                <div class="mt-2 mb-4">
+                    <div class="flex items-center rounded-md bg-white/5 outline-1 -outline-offset-1 outline-gray-600 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-sky-500">
+                        <input required type="email" id="Email" name="Email" placeholder="JustinXie@email.com" class="font-cagliostro w-full py-1.5 px-3 text-base focus:outline-none">
+                    </div>
+                </div>
+                <label for="Comments" class="font-cagliostro block font-medium">Comments</label>
+                <div class="mt-2 mb-4">
+                    <div class="flex items-center rounded-md bg-white/5 outline-1 -outline-offset-1 outline-gray-600 has-[textarea:focus-within]:outline-2 has-[textarea:focus-within]:-outline-offset-2 has-[textarea:focus-within]:outline-sky-500">
+                        <textarea rows="4" name="Comments" id="comments" class="font-cagliostro w-full py-1.5 px-3 text-base focus:outline-none"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="mt-4 bg-sky-500 hover:bg-sky-600 text-white font-cagliostro font-semibold py-2 px-4 rounded"> Message Me!</button>
+                <button type="reset" class="mt-4 bg-red-500 hover:bg-sky-600 text-white font-cagliostro font-semibold py-2 px-4 rounded"> Clear</button>
+                </div>
+                <div x-show="submitted" class="font-cagliostro text-green-600 text-lg mt-4 text-center">
+                    Thanks! I'll be in touch soon.
+                </div>
+            </form>
+            </div>
+        </section>
+
+        
+
+
+        <section class="bg-sky-100 flex flex-col items-center justify-center p-4">
+          <ul class="list-none w-64 text-center">
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="index.html#nav" class="font-cagliostro">Home</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="resume.html" class="font-cagliostro">Resume</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="portfolio.html" class="font-cagliostro">Portfolio</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="contact.html" class="font-cagliostro">Contact</a>
+            </li>
+          </ul>
+          <div class="text-center pt-6">
+            <p class="pb-5 font-cagliostro">Copyright: &copy; 2025 Justin Xie</p>
+          </div>
+        </section>
+
+
+     </div>
+
+  </body>
+</html>

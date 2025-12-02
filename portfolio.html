@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+      .font-cagliostro {
+        font-family: 'Cagliostro', sans-serif;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+
+    <title>Justin Xie's Portfolio</title>
+  </head>
+  <body>
+     <div>
+        <nav x-data="{ open: false }" class="bg-sky-100 p-5 relative shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-12">
+        
+            <div class="flex-shrink-0">
+                <a href="index.html">
+                <h2 class="font-cagliostro text-xl font-bold">Justin Xie</h2>
+                </a>
+            </div>
+
+            <div class="hidden sm:flex space-x-6">
+                <a href="index.html#nav" class="font-cagliostro hover:underline">Home</a>
+                <a href="resume.html" class="font-cagliostro hover:underline">Resume</a>
+                <a href="portfolio.html" class="font-cagliostro hover:underline">Portfolio</a>
+                <a href="contact.html" class="font-cagliostro hover:underline">Contact</a>
+            </div>
+
+            <div class="sm:hidden">
+                <button @click="open = !open" class="text-2xl text-gray-700 hover:text-black focus:outline-none">
+                <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+                </button>
+            </div>
+            </div>
+
+            <div x-show="open" @click.away="open = false" class="sm:hidden mt-4 space-y-2">
+            <a href="index.html#nav" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Home</a>
+            <a href="resume.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Resume</a>
+            <a href="portfolio.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Portfolio</a>
+            <a href="contact.html" class="block font-cagliostro px-4 py-2 hover:bg-sky-200 rounded">Contact</a>
+            </div>
+        </div>
+        </nav>
+
+
+        <section class="bg-sky-50 p-4">
+            <h1 class="font-cagliostro text-center text-4xl font-bold">Video Collection</h1>
+        </section>
+
+
+        <section x-data class="bg-sky-50 py-10">
+            <div class="relative max-w-6xl mx-auto">
+                <button @click="$refs.scrollContainer.scrollBy({left: -300, behavior: 'smooth'})"
+                    class="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 text-sky-700 hover:text-black text-4xl"
+                    aria-label="Scroll Left">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <button
+                @click="$refs.scrollContainer.scrollBy({ left: 300, behavior: 'smooth' })"
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 text-sky-700 hover:text-black text-4xl"
+                aria-label="Scroll Right">
+                <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <div x-ref="scrollContainer"
+                    class="flex space-x-6 overflow-x-auto scroll-smooth px-12 py-4 no-scrollbar">
+
+                    <div class="flex-none w-72 sm:w-80 md:w-96">
+                        <div class="aspect-video">
+                        <iframe class="w-full rounded-lg shadow"src="https://www.youtube.com/embed/SiE18n8gAQo?si=JGKl75_XoH3OaeE7" title="HighSchool Goodbye Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="mt-2 text-center font-cagliostro">High School Goodbye Video</p>
+                    </div>
+
+                
+                    <div class="flex-none w-72 sm:w-80 md:w-96">
+                        <div class="aspect-video">
+                        <iframe class="w-full rounded-lg shadow"src="https://www.youtube.com/embed/y3RbklzP490?si=RCAGx7lT7bxNA6eZ" title="Myopic Mirrors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="mt-2 text-center font-cagliostro">Myopic Mirrors</p>
+                    </div>
+
+
+                    <div class="flex-none w-72 sm:w-80 md:w-96">
+                        <div class="aspect-video">
+                        <iframe class="w-full rounded-lg shadow"src="https://www.youtube.com/embed/VJkZQSiyC_E?si=1agnXWm1C1YbsDSz" title="Sudoku Group project video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="mt-2 text-center font-cagliostro">Sudoku Group project Video</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-sky-50 p-8">
+            <h1 class="font-cagliostro text-center text-4xl font-bold p-4">More Coming Soon!</h1>
+        </section>
+
+
+        <section class="bg-sky-100 flex flex-col items-center justify-center p-4">
+          <ul class="list-none w-64 text-center">
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="index.html#nav" class="font-cagliostro">Home</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="resume.html" class="font-cagliostro">Resume</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="portfolio.html" class="font-cagliostro">Portfolio</a>
+            </li>
+            <li class="bg-sky-50 rounded-full m-2 font-semibold p-2 
+                      hover:bg-sky-300 hover:scale-105 transition-all duration-300">
+              <a href="contact.html" class="font-cagliostro">Contact</a>
+            </li>
+          </ul>
+          <div class="text-center pt-6">
+            <p class="pb-5 font-cagliostro">Copyright: &copy; 2025 Justin Xie</p>
+          </div>
+        </section>
+
+
+     </div>
+
+  </body>
+</html>
